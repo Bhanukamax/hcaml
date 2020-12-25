@@ -1,7 +1,22 @@
 div [
 
-    h1 ["hellow guys"]
-    p [ "I am the head" ]
+    h1 'hellow guys'
+
+    p "I am the head" 
+
+    p [
+        "this is" span "another text" 
+    ]
+
+]
+
+section [
+    div [ 
+        ul [
+            li "this is a text"
+            li "this is another text"
+        ]
+    ]
 
 ]
 

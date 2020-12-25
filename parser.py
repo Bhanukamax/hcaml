@@ -1,5 +1,7 @@
 import re
+import json
 in_file = "header.hcaml"
+tokens_file = "header.tokens.json"
 out_file = "header.html"
 
 f = open(in_file, "r")
@@ -8,8 +10,7 @@ f = open(in_file, "r")
 
 source_code = f.read()
 
-
-def parser(input):
+def tokenizer(input):
 
     # Current position
 
@@ -18,13 +19,19 @@ def parser(input):
     while _current < len(input):
         _char = input[_current]
 
+        # CAPTURE PARANS #
         if (_char == "[" or _char == "]"):
-            _tokens.append({ "type": "paren", "value": _char})
+            _tokens.append({ "type": "PAREN", "value": _char})
             _current += 1
             continue
 
+        # CAPTURE QUOATS #
+        if (_char == "\"" or _char == "'"):
+            _tokens.append({ "type": "QUOAT", "value": _char})
+            _current += 1
+            continue
 
-
+        # IGNORE SPACES #
         SPACE = " "
         if (re.search(SPACE, _char)):
             _value = ""
@@ -34,6 +41,7 @@ def parser(input):
 
             continue
 
+        # CAPTURE WORDS #
         LETTERS = "[a-z]|[A-Z]|[0-9]"
         if (re.search(LETTERS, _char)):
             _value = ""
@@ -43,16 +51,20 @@ def parser(input):
                 _current = _current + 1 
                 count 
 
-            _tokens.append({"type": "name", "value": _value})
+            _tokens.append({"type": "WORD", "value": _value})
             continue
-
         
         _current += 1
     return _tokens
 
-token = parser(source_code)
+tokens = tokenizer(source_code)
 
-print(token)
+with open(tokens_file, "w") as fout:
+    json.dump(tokens, fout)
+# f.write(tokens)
+# f.close()
+
+print(tokens)
         
 
 
