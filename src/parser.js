@@ -33,13 +33,6 @@ module.exports = function parser(tokens) {
     }
 
     if (token.type === "OPEN_PAREN") {
-      //token = tokens[++current];
-
-      //let node = {
-        //type: "Children",
-        //name: token.value,
-        //children: [],
-      //};
 
       token = tokens[++current];
 

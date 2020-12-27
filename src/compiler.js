@@ -37,7 +37,8 @@ async function main() {
   console.log("ast >>>", ast);
     
 
-  fs.writeFile("header.tokens.json", JSON.stringify(ast, null, 2));
+  fs.writeFile("header.tokens.json", JSON.stringify(filteredTokens, null, 2));
+  fs.writeFile("header.ast.json", JSON.stringify(ast, null, 2));
   } catch(e) {
     console.log('parser ERROR >>>', e.stack);
   }
