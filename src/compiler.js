@@ -1,0 +1,37 @@
+const fs = require("fs").promises;
+const lexer = require("./lexer");
+
+async function main() {
+  const code = (await fs.readFile("header.hcaml")).toString();
+
+  lexer.reset(code);
+  let token;
+  let tokens = [];
+
+  while (true) {
+    token = lexer.next();
+    console.log("token>>>", token);
+    if (token) {
+      console.log("got token", token);
+      tokens.push({
+        type: token.type,
+        value: token.value,
+      });
+    } else {
+      break;
+    }
+  }
+
+  console.log(code);
+  console.log("all tokens", JSON.stringify(tokens));
+
+  fs.writeFile(
+    "header.tokens.json",
+    JSON.stringify(
+      tokens.filter((item) => item.type !== "WS" && item.type !== "NL")
+    )
+  );
+  return tokens;
+}
+
+main().catch((error) => console.log(error.stack));
