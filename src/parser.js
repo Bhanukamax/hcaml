@@ -25,7 +25,11 @@ module.exports = function parser(tokens) {
 
       current++;
 
-      return node;
+      return {
+          type: node.type,
+          value: node.value,
+          children: node.children,
+      };
     }
 
     if (token.type === "OPEN_PAREN") {
@@ -46,7 +50,12 @@ module.exports = function parser(tokens) {
 
       current++;
 
-      return node;
+     
+      return {
+          type: node.type,
+          value: node.value,
+          children: node.children,
+      };
     }
 
     throw new TypeError(token.type);

@@ -1,9 +1,14 @@
 h1 "this is the title"
+
 div [
-"this is a div line 1"
-"this is a div line 2"
-"this is a div line 3"
-"this is a div line 4"
+  "this is a div line 1"
+
+  p "this is a paragraph in div"
+
+  p "this is a paragraph2 in div"
+
+  p [ "this is a" span "paragraph3" "in div" ]
 ]
+
 p "this is the p"
 

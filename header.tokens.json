@@ -2,16 +2,18 @@
   "type": "Program",
   "body": [
     {
+      "type": "Element",
+      "value": "h1",
       "children": [
         {
           "type": "String",
           "value": "\"this is the title\""
         }
-      ],
-      "type": "Element",
-      "value": "h1"
+      ]
     },
     {
+      "type": "Element",
+      "value": "div",
       "children": [
         {
           "children": [
@@ -22,42 +24,68 @@
           ]
         },
         {
+          "type": "Element",
+          "value": "p",
           "children": [
             {
               "type": "String",
-              "value": "\"this is a div line 2\""
+              "value": "\"this is a paragraph in div\""
             }
           ]
         },
         {
+          "type": "Element",
+          "value": "p",
           "children": [
             {
               "type": "String",
-              "value": "\"this is a div line 3\""
+              "value": "\"this is a paragraph2 in div\""
             }
           ]
         },
         {
+          "type": "Element",
+          "value": "p",
           "children": [
             {
-              "type": "String",
-              "value": "\"this is a div line 4\""
+              "children": [
+                {
+                  "type": "String",
+                  "value": "\"this is a\""
+                }
+              ]
+            },
+            {
+              "type": "Element",
+              "value": "span",
+              "children": [
+                {
+                  "type": "String",
+                  "value": "\"paragraph3\""
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "type": "String",
+                  "value": "\"in div\""
+                }
+              ]
             }
           ]
         }
-      ],
-      "type": "Element",
-      "value": "div"
+      ]
     },
     {
+      "type": "Element",
+      "value": "p",
       "children": [
         {
           "type": "String",
           "value": "\"this is the p\""
         }
-      ],
-      "type": "Element",
-      "value": "p"
+      ]
     }
   ]
 }
