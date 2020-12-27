@@ -25,16 +25,17 @@ async function main() {
 
   console.log(code);
   const filteredTokens = tokens.filter(
-    (item) => item.type !== "WS" && item.type !== "NL"
+    (item) => item.type !== "WHITE_SPACE" && item.type !== "LINE_BRAKE"
   );
-  console.log("all tokens", JSON.stringify(tokens));
 
   const ast = parser(filteredTokens);
+  console.log("all tokens", tokens);
+  console.log("filtered tokens", filteredTokens);
 
-  console.log("ast >>>", filteredTokens);
+  console.log("ast >>>", ast);
     
 
-  fs.writeFile("header.tokens.json", JSON.stringify(filteredTokens));
+  fs.writeFile("header.tokens.json", JSON.stringify(ast));
 }
 
 main().catch((error) => console.log(error.stack));
