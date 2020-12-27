@@ -74,5 +74,29 @@
   {
     "type": "STRING",
     "value": "\"this is the p\""
+  },
+  {
+    "type": "TAG",
+    "value": "li"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is list item one\""
+  },
+  {
+    "type": "TAG",
+    "value": "li"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is list item 2\""
+  },
+  {
+    "type": "TAG",
+    "value": "li"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is list item 3\""
   }
 ]

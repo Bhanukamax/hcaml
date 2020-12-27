@@ -1,6 +1,7 @@
 const fs = require("fs").promises;
 const lexer = require("./lexer");
 const parser = require("./parser");
+const transformer = require("./transformer");
 
 async function main() {
   const code = (await fs.readFile("header.hcaml")).toString();
@@ -35,10 +36,12 @@ async function main() {
   console.log("filtered tokens", filteredTokens);
 
   console.log("ast >>>", ast);
+  const code = transformer(ast);
     
 
   fs.writeFile("header.tokens.json", JSON.stringify(filteredTokens, null, 2));
   fs.writeFile("header.ast.json", JSON.stringify(ast, null, 2));
+  fs.writeFile("header.html", code);
   } catch(e) {
     console.log('parser ERROR >>>', e.stack);
   }

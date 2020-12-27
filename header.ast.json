@@ -86,6 +86,36 @@
           "value": "\"this is the p\""
         }
       ]
+    },
+    {
+      "type": "Element",
+      "value": "li",
+      "children": [
+        {
+          "type": "String",
+          "value": "\"this is list item one\""
+        }
+      ]
+    },
+    {
+      "type": "Element",
+      "value": "li",
+      "children": [
+        {
+          "type": "String",
+          "value": "\"this is list item 2\""
+        }
+      ]
+    },
+    {
+      "type": "Element",
+      "value": "li",
+      "children": [
+        {
+          "type": "String",
+          "value": "\"this is list item 3\""
+        }
+      ]
     }
   ]
 }
