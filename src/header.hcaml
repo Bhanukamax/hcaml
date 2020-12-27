@@ -1,5 +1,4 @@
 div [
-    h1 "this is the title",
-    h1 [ "hellow", span "world!" ]
+    h1 "this is the title"
 ]
 

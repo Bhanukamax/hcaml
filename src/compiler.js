@@ -28,6 +28,8 @@ async function main() {
     (item) => item.type !== "WHITE_SPACE" && item.type !== "LINE_BRAKE"
   );
 
+  try {
+
   const ast = parser(filteredTokens);
   console.log("all tokens", tokens);
   console.log("filtered tokens", filteredTokens);
@@ -35,7 +37,10 @@ async function main() {
   console.log("ast >>>", ast);
     
 
-  fs.writeFile("header.tokens.json", JSON.stringify(ast));
+  fs.writeFile("header.tokens.json", JSON.stringify(ast, null, 2));
+  } catch(e) {
+    console.log('parser ERROR >>>', e.stack);
+  }
 }
 
 main().catch((error) => console.log(error.stack));

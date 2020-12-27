@@ -1,5 +1,4 @@
-div [
-    h1 "this is the title"
-    p [ "hellow" span "world!" ]
-]
+h1 "this is the title"
+div "this is a div"
+p "this is the p"
 

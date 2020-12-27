@@ -1,1 +1,38 @@
-{"type":"Document","children":[{"type":"ELEMENT","name":"div","children":[]},{"type":"ELEMENT","name":"h1","children":[{"type":"TEXT","value":"\"this is the title\""}]},{"type":"ELEMENT","name":"p","children":[]},{"type":"ELEMENT","name":"span","children":[{"type":"TEXT","value":"\"world!\""}]}]}
+{
+  "type": "Document",
+  "children": [
+    {
+      "children": [
+        {
+          "name": "STRING",
+          "value": "\"this is the title\"",
+          "children": []
+        }
+      ],
+      "name": "TAG",
+      "value": "h1"
+    },
+    {
+      "children": [
+        {
+          "name": "STRING",
+          "value": "\"this is a div\"",
+          "children": []
+        }
+      ],
+      "name": "TAG",
+      "value": "div"
+    },
+    {
+      "children": [
+        {
+          "name": "STRING",
+          "value": "\"this is the p\"",
+          "children": []
+        }
+      ],
+      "name": "TAG",
+      "value": "p"
+    }
+  ]
+}
