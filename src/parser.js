@@ -22,6 +22,7 @@ module.exports = function parser(tokens) {
         type: "String",
         value: token.value,
       });
+    
 
       current++;
 

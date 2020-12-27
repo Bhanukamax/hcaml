@@ -1,23 +1,33 @@
 module.exports = function parser(ast) {
   code = "";
   function walk(node) {
-    //node = ast.body[current];
+    if (!node.value && node.children.length === 1) {
+      if (node.children[0].type === "String" && node.children[0].value ) {
+        code += node.children[0].value
+      }
+    }
+
     if (node.type === "Element") {
       code += `<${node.value}>`;
 
       if (node.children.length <= 1) {
+
         code += node.children[0].value;
+
       } else {
+        let current = 0;
+        while (current < node.children.length) {
+          code = walk(node.children[current++]);
+        }
       }
 
-    
-      code += `</${node.value || ''}>`;
+      code += `</${node.value || ""}>`;
     }
     return code;
   }
 
   let current = 0;
-  while(current < ast.body.length - 1) {
+  while (current < ast.body.length) {
     code = walk(ast.body[current++]);
     //current++;
   }
