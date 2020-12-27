@@ -77,6 +77,14 @@
   },
   {
     "type": "TAG",
+    "value": "ul"
+  },
+  {
+    "type": "OPEN_PAREN",
+    "value": "["
+  },
+  {
+    "type": "TAG",
     "value": "li"
   },
   {
@@ -98,5 +106,17 @@
   {
     "type": "STRING",
     "value": "\"this is list item 3\""
+  },
+  {
+    "type": "CLOSE_PAREN",
+    "value": "]"
+  },
+  {
+    "type": "TAG",
+    "value": "p"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is a p tag\""
   }
 ]

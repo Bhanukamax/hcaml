@@ -11,8 +11,11 @@ div [
 ]
 
 p "this is the p"
+ul [
+  li "this is list item one"
+  li "this is list item 2"
+  li "this is list item 3"
+]
 
-li "this is list item one"
-li "this is list item 2"
-li "this is list item 3"
+p "this is a p tag"
 

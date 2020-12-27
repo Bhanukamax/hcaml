@@ -89,31 +89,47 @@
     },
     {
       "type": "Element",
-      "value": "li",
+      "value": "ul",
       "children": [
         {
-          "type": "String",
-          "value": "\"this is list item one\""
+          "type": "Element",
+          "value": "li",
+          "children": [
+            {
+              "type": "String",
+              "value": "\"this is list item one\""
+            }
+          ]
+        },
+        {
+          "type": "Element",
+          "value": "li",
+          "children": [
+            {
+              "type": "String",
+              "value": "\"this is list item 2\""
+            }
+          ]
+        },
+        {
+          "type": "Element",
+          "value": "li",
+          "children": [
+            {
+              "type": "String",
+              "value": "\"this is list item 3\""
+            }
+          ]
         }
       ]
     },
     {
       "type": "Element",
-      "value": "li",
+      "value": "p",
       "children": [
         {
           "type": "String",
-          "value": "\"this is list item 2\""
-        }
-      ]
-    },
-    {
-      "type": "Element",
-      "value": "li",
-      "children": [
-        {
-          "type": "String",
-          "value": "\"this is list item 3\""
+          "value": "\"this is a p tag\""
         }
       ]
     }
