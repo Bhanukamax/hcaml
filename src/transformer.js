@@ -1,23 +1,25 @@
 module.exports = function parser(ast) {
-  let current = 0;
-  let node = {};
-  let code = "";
-  function walk() {
-    node = ast.body[current];
+  code = "";
+  function walk(node) {
+    //node = ast.body[current];
     if (node.type === "Element") {
       code += `<${node.value}>`;
 
-      if (node.children.length === 1) {
+      if (node.children.length <= 1) {
         code += node.children[0].value;
+      } else {
       }
-      code += `</${node.value}>`;
+
+    
+      code += `</${node.value || ''}>`;
     }
-    current++;
-    while(current < ast.body.length) {
-      walk()
-    }
+    return code;
   }
 
-  walk()
+  let current = 0;
+  while(current < ast.body.length - 1) {
+    code = walk(ast.body[current++]);
+    //current++;
+  }
   return code;
 };
