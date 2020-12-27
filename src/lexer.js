@@ -6,9 +6,9 @@ module.exports = moo.compile({
   NUMBER:  /0|[1-9][0-9]*/,
   STRING:  /"(?:\\["\\]|[^\n"\\])*"/,
   TAG:  /[a-zA-Z][a-zA-Z0-9]*/,
-  LEFT_PAREN:  '[',
+  OPEN_PAREN:  '[',
   COMMA:  ',',
-  RIGHT_PAREN:  ']',
+  CLOSE_PAREN:  ']',
   KEYWORD: [],
   LINE_BRAKE:      { match: /\n/, lineBreaks: true },
 })

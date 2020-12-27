@@ -1,37 +1,62 @@
 {
-  "type": "Document",
-  "children": [
+  "type": "Program",
+  "body": [
     {
       "children": [
         {
-          "name": "STRING",
-          "value": "\"this is the title\"",
-          "children": []
+          "type": "String",
+          "value": "\"this is the title\""
         }
       ],
-      "name": "TAG",
+      "type": "Element",
       "value": "h1"
     },
     {
       "children": [
         {
-          "name": "STRING",
-          "value": "\"this is a div\"",
-          "children": []
+          "children": [
+            {
+              "type": "String",
+              "value": "\"this is a div line 1\""
+            }
+          ]
+        },
+        {
+          "children": [
+            {
+              "type": "String",
+              "value": "\"this is a div line 2\""
+            }
+          ]
+        },
+        {
+          "children": [
+            {
+              "type": "String",
+              "value": "\"this is a div line 3\""
+            }
+          ]
+        },
+        {
+          "children": [
+            {
+              "type": "String",
+              "value": "\"this is a div line 4\""
+            }
+          ]
         }
       ],
-      "name": "TAG",
+      "type": "Element",
       "value": "div"
     },
     {
       "children": [
         {
-          "name": "STRING",
-          "value": "\"this is the p\"",
-          "children": []
+          "type": "String",
+          "value": "\"this is the p\""
         }
       ],
-      "name": "TAG",
+      "type": "Element",
       "value": "p"
     }
   ]

@@ -1,4 +1,9 @@
 h1 "this is the title"
-div "this is a div"
+div [
+"this is a div line 1"
+"this is a div line 2"
+"this is a div line 3"
+"this is a div line 4"
+]
 p "this is the p"
 

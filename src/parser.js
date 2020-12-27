@@ -1,56 +1,66 @@
-module.exports = function (tokens) {
-  //return tokens;
+module.exports = function parser(tokens) {
   let current = 0;
+  //return tokens;
+
   function walk() {
-    let token = {};
-    node = { children: [] };
-
-    if (tokens[current]) token = tokens[current];
+    let token = tokens[current];
+    let node = { children: [] };
 
 
-    if (token && token.type === "TAG") {
-      node.name = "TAG";
-      node.value = token && token.value;
-      //node = {
-        //...node,
-        //name: "TAG",
-        //value: token && token.value,
+    if (token.type === "TAG") {
+
+      //return {
+      node.type = "Element";
+      node.value = token.value;
       //};
+      token = tokens[++current];
+    }
+
+    if (token.type === "STRING") {
+
+      node.children.push({
+        type: "String",
+        value: token.value,
+      });
 
       current++;
-     if (tokens[current]) token = tokens[current];
+
+      return node;
     }
 
-    if (token && token.type === "STRING") {
-      node.children.push({
-        name: "STRING",
-        value: token.value,
-        children: [],
-      });
-      //current++;
-     //if (tokens[current]) token = tokens[current];
+    if (token.type === "OPEN_PAREN") {
+      //token = tokens[++current];
+
+      //let node = {
+        //type: "Children",
+        //name: token.value,
+        //children: [],
+      //};
+
+      token = tokens[++current];
+
+      while (token.type !== "CLOSE_PAREN") {
+        node.children.push(walk());
+        token = tokens[current];
+      }
+
+      current++;
+
+      return node;
     }
 
-    //while (token.type === "LEFT_PAREN" || token.type == !"RIGHT_PAREN") {
-      //node.children.push(walk());
-      //current++;
-      //if (tokens[current]) token = tokens[current];
-    //}
-
-    //current++;
-    return node;
+    throw new TypeError(token.type);
   }
 
-  let ast = [];
+  let ast = {
+    type: "Program",
+    body: [],
+  };
 
   while (current < tokens.length) {
-    console.log("current in while >>", current);
-    ast.push(walk());
-    current++;
-    token = tokens[current];
+    ast.body.push(walk());
   }
-  return {
-    type: "Document",
-    children: ast,
-  };
+
+  // At the end of our parser we'll return the AST.
+  return ast;
 };
