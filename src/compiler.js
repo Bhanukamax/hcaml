@@ -1,5 +1,6 @@
 const fs = require("fs").promises;
 const lexer = require("./lexer");
+const parser = require("./parser");
 
 async function main() {
   const code = (await fs.readFile("header.hcaml")).toString();
@@ -23,15 +24,17 @@ async function main() {
   }
 
   console.log(code);
+  const filteredTokens = tokens.filter(
+    (item) => item.type !== "WS" && item.type !== "NL"
+  );
   console.log("all tokens", JSON.stringify(tokens));
 
-  fs.writeFile(
-    "header.tokens.json",
-    JSON.stringify(
-      tokens.filter((item) => item.type !== "WS" && item.type !== "NL")
-    )
-  );
-  return tokens;
+  const ast = parser(filteredTokens);
+
+  console.log("ast >>>", filteredTokens);
+    
+
+  fs.writeFile("header.tokens.json", JSON.stringify(filteredTokens));
 }
 
 main().catch((error) => console.log(error.stack));
