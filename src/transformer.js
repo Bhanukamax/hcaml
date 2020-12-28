@@ -1,19 +1,43 @@
 module.exports = function parser(ast) {
   code = "";
   function walk(node) {
+    // if has only one child
     if (!node.value && node.children.length === 1) {
-      if (node.children[0].type === "String" && node.children[0].value ) {
-        code += node.children[0].value
+      // if it's a plain text
+      if (node.children[0].type === "String" && node.children[0].value) {
+        code += node.children[0].value;
       }
     }
 
     if (node.type === "Element") {
       code += `<${node.value}>`;
 
-      if (node.children.length <= 1) {
-
+      // If element has only one childe which is a string
+      if (node.children.length <= 1 && node.children[0].value) {
         code += node.children[0].value;
-
+      } else if (
+        /*
+         *{
+         *  "type": "Element",
+         *  "value": "p",
+         *  "children": [
+         *    {
+         *      "children": [
+         *        {
+         *          "type": "String",
+         *          "value": "\"this will be undefined\""
+         *        }
+         *      ]
+         *    }
+         *  ]
+         *}
+         *
+         */
+        node.children[0] &&
+        node.children[0].children[0] &&
+        node.children[0].children[0].value
+      ) {
+        code += node.children[0].children[0].value;
       } else {
         let current = 0;
         while (current < node.children.length) {
