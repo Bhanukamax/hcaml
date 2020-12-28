@@ -13,7 +13,11 @@ module.exports = function parser(ast) {
       code += `<${node.value}>`;
 
       // If element has only one childe which is a string
-      if (node.children.length <= 1 && node.children[0].value) {
+      if (
+        node.children.length <= 1 &&
+        node.children[0].value &&
+        node.children[0].type === "String"
+      ) {
         code += node.children[0].value;
       } else if (
         /*
@@ -35,6 +39,7 @@ module.exports = function parser(ast) {
          */
         node.children.length <= 1 &&
         node.children[0] &&
+        node.children[0].type !== 'Element' &&
         node.children[0].children.length <= 1 &&
         node.children[0].children[0].value &&
         node.children[0].children[0].type == "String"
@@ -59,5 +64,3 @@ module.exports = function parser(ast) {
   }
   return code;
 };
-
-
