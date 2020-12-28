@@ -1,4 +1,7 @@
 {
+  "name": "hcaml",
+  "main": "src/compiler.js",
+  "version": "1.0.0",
   "dependencies": {
     "eslint": "^7.16.0",
     "moo": "^0.5.1"
