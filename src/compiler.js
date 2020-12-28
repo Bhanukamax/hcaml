@@ -30,10 +30,12 @@ async function main() {
   const filteredTokens = tokens.filter(
     (item) => item.type !== "WHITE_SPACE" && item.type !== "LINE_BRAKE"
   );
+  fs.writeFile(`${fileName}.json`, JSON.stringify(filteredTokens, null, 2));
 
   try {
 
   const ast = parser(filteredTokens);
+  fs.writeFile(`${fileName}.ast.json`, JSON.stringify(ast, null, 2));
   console.log("all tokens", tokens);
   console.log("filtered tokens", filteredTokens);
 
@@ -41,8 +43,6 @@ async function main() {
   const code = transformer(ast);
     
 
-  fs.writeFile(`${fileName}.json`, JSON.stringify(filteredTokens, null, 2));
-  fs.writeFile(`${fileName}.ast.json`, JSON.stringify(ast, null, 2));
   fs.writeFile(`${fileName}.html`, code);
   } catch(e) {
     console.log('parser ERROR >>>', e.stack);

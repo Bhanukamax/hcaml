@@ -6,6 +6,7 @@ module.exports = moo.compile({
   NUMBER:  /0|[1-9][0-9]*/,
   STRING:  /"(?:\\["\\]|[^\n"\\])*"/,
   TAG:  /[a-zA-Z][a-zA-Z0-9]*/,
+  CLASS_NAME:  /[\.][a-zA-Z0-9]*/,
   OPEN_PAREN:  '[',
   COMMA:  ',',
   CLOSE_PAREN:  ']',

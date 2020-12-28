@@ -1,9 +1,6 @@
-
 function getString(stringWithQoutes) {
-  return stringWithQoutes.substr(1, stringWithQoutes.length -2); 
-
+  return stringWithQoutes.substr(1, stringWithQoutes.length - 2);
 }
-
 
 module.exports = function parser(tokens) {
   let current = 0;
@@ -11,11 +8,9 @@ module.exports = function parser(tokens) {
 
   function walk() {
     let token = tokens[current];
-    let node = { children: [] };
-
+    let node = { children: [], attributes: {} };
 
     if (token.type === "TAG") {
-
       //return {
       node.type = "Element";
       node.value = token.value;
@@ -23,25 +18,29 @@ module.exports = function parser(tokens) {
       token = tokens[++current];
     }
 
-    if (token.type === "STRING") {
+    if (token.type === "CLASS_NAME") {
+        node.attributes.className = token.value
 
+      token = tokens[++current];
+    }
+
+    if (token.type === "STRING") {
       node.children.push({
         type: "String",
-        value: getString(token.value)
+        value: getString(token.value),
       });
-    
 
       current++;
 
       return {
-          type: node.type,
-          value: node.value,
-          children: node.children,
+        type: node.type,
+        value: node.value,
+        attributes : node.attributes,
+        children: node.children,
       };
     }
 
     if (token.type === "OPEN_PAREN") {
-
       token = tokens[++current];
 
       while (token.type !== "CLOSE_PAREN") {
@@ -51,11 +50,11 @@ module.exports = function parser(tokens) {
 
       current++;
 
-     
       return {
-          type: node.type,
-          value: node.value,
-          children: node.children,
+        type: node.type,
+        value: node.value,
+        attributes : node.attributes,
+        children: node.children,
       };
     }
 
