@@ -36,7 +36,8 @@ module.exports = function parser(ast) {
         node.children.length <= 1 &&
         node.children[0] &&
         node.children[0].children.length <= 1 &&
-        node.children[0].children[0].value
+        node.children[0].children[0].value &&
+        node.children[0].children[0].type == "String"
       ) {
         code += node.children[0].children[0].value;
       } else {
@@ -58,3 +59,5 @@ module.exports = function parser(ast) {
   }
   return code;
 };
+
+
