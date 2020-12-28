@@ -4,7 +4,8 @@ const parser = require("./parser");
 const transformer = require("./transformer");
 
 async function main() {
-  const code = (await fs.readFile("header.hcaml")).toString();
+  const fileName = process.argv[2]
+  const code = (await fs.readFile(fileName)).toString();
 
   lexer.reset(code);
   let token;
@@ -39,12 +40,13 @@ async function main() {
   const code = transformer(ast);
     
 
-  fs.writeFile("header.tokens.json", JSON.stringify(filteredTokens, null, 2));
-  fs.writeFile("header.ast.json", JSON.stringify(ast, null, 2));
-  fs.writeFile("header.html", code);
+  fs.writeFile(`${fileName}.json`, JSON.stringify(filteredTokens, null, 2));
+  fs.writeFile(`${fileName}.ast.json`, JSON.stringify(ast, null, 2));
+  fs.writeFile(`${fileName}.html`, code);
   } catch(e) {
     console.log('parser ERROR >>>', e.stack);
   }
+  console.log('the args :: ', process.argv[2])
 }
 
 main().catch((error) => console.log(error.stack));
