@@ -1,3 +1,4 @@
+#!/home/bm/.nvm/versions/node/v12.9.0/bin/node
 const fs = require("fs").promises;
 const lexer = require("./lexer");
 const parser = require("./parser");
