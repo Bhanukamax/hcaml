@@ -1,3 +1,10 @@
+
+function getString(stringWithQoutes) {
+  return stringWithQoutes.substr(1, stringWithQoutes.length -2); 
+
+}
+
+
 module.exports = function parser(tokens) {
   let current = 0;
   //return tokens;
@@ -20,7 +27,7 @@ module.exports = function parser(tokens) {
 
       node.children.push({
         type: "String",
-        value: token.value,
+        value: getString(token.value)
       });
     
 
