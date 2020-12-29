@@ -12,12 +12,15 @@ module.exports = function parser(ast) {
     if (node.type === "Element") {
       code += `<${node.value}`;
 
-      if (node.attributes.classNames) {
-        code += ` class="${node.attributes.classNames}"`
-      }
+      if (Object.keys(node.attributes).length > 0) {
+        console.log('>>> SPLITING THE ATTR')
+        code += Object.keys(node.attributes).reduce((acc, key) => 
+          acc += ` ${key}="${node.attributes[key]}"`
+        , "")
 
-      if (node.attributes.id) {
-        code += ` id="${node.attributes.id}"`
+      } else {
+        console.log(' <<<<<<<<<<<<<<<<<<<<<<<<,, No attributes')
+
       }
       
 

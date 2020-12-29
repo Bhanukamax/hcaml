@@ -37,7 +37,7 @@ module.exports = function parser(tokens) {
 
     // Handle class names
     if (token.type === "CLASS_NAME") {
-      node.attributes.classNames = getClassNames(token.value);
+      node.attributes.class = getClassNames(token.value);
 
       token = tokens[++current];
     }
