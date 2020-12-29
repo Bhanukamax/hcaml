@@ -66,6 +66,14 @@ module.exports = function parser(tokens) {
       node.attributes[type] = value;
 
       token = tokens[++current];
+      if (token.type === "TAG"  || token.type === "CLOSE_PAREN") {
+        return {
+          type: node.type,
+          value: node.value,
+          attributes: node.attributes,
+          children: node.children,
+        };
+      }
     }
 
     if (token.type === "STRING") {
