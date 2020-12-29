@@ -12,20 +12,16 @@ module.exports = function parser(ast) {
     if (node.type === "Element") {
       code += `<${node.value}`;
 
+      // Add attributes
       if (Object.keys(node.attributes).length > 0) {
-        console.log('>>> SPLITING THE ATTR')
-        code += Object.keys(node.attributes).reduce((acc, key) => 
-          acc += ` ${key}="${node.attributes[key]}"`
-        , "")
-
-      } else {
-        console.log(' <<<<<<<<<<<<<<<<<<<<<<<<,, No attributes')
-
+        console.log(">>> SPLITING THE ATTR");
+        code += Object.keys(node.attributes).reduce(
+          (acc, key) => (acc += ` ${key}="${node.attributes[key]}"`),
+          ""
+        );
       }
-      
 
-
-      code += '>'
+      code += ">";
 
       // If element has only one childe which is a string
       if (
