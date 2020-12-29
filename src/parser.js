@@ -33,6 +33,16 @@ module.exports = function parser(tokens) {
       node.value = token.value;
       //};
       token = tokens[++current];
+
+      // If the next token is also type "TAG" return 
+      if (token.type === "TAG") {
+        return {
+          type: node.type,
+          value: node.value,
+          attributes: node.attributes,
+          children: node.children,
+        };
+      }
     }
 
     // Handle class names
