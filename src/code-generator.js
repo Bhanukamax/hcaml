@@ -10,7 +10,19 @@ module.exports = function parser(ast) {
     }
 
     if (node.type === "Element") {
-      code += `<${node.value}>`;
+      code += `<${node.value}`;
+
+      if (node.attributes.classNames) {
+        code += ` class="${node.attributes.classNames}"`
+      }
+
+      if (node.attributes.id) {
+        code += ` id="${node.attributes.id}"`
+      }
+      
+
+
+      code += '>'
 
       // If element has only one childe which is a string
       if (
@@ -39,7 +51,7 @@ module.exports = function parser(ast) {
          */
         node.children.length <= 1 &&
         node.children[0] &&
-        node.children[0].type !== 'Element' &&
+        node.children[0].type !== "Element" &&
         node.children[0].children.length <= 1 &&
         node.children[0].children[0].value &&
         node.children[0].children[0].type == "String"

@@ -8,6 +8,7 @@ module.exports = moo.compile({
   TAG:  /[a-zA-Z][a-zA-Z0-9]*/,
   CLASS_NAME:  /[\.][a-zA-Z0-9\.\-\_]*/,
   ID:  /[\#][a-zA-Z0-9\.\-\_]*/,
+  ATTR:  /[\~][a-zA-Z0-9\\.\-\_]*[\:]"(?:\\["\\]|[^\n"\\])*"/,
   OPEN_PAREN:  '[',
   COMMA:  ',',
   CLOSE_PAREN:  ']',

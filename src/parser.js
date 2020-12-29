@@ -3,8 +3,20 @@ function getString(stringWithQoutes) {
 }
 
 function getClassNames(classNames) {
-  return classNames.split('.').join(' ');
+  return classNames.split(".").join(" ");
+}
 
+function getId(id) {
+  return id.substr(1, id.length - 1);
+}
+
+function getAttribute(attr) {
+  const [type, value] = attr.split(":");
+
+  return {
+    type: type.substr(1, type.length - 1),
+    value: getString(value),
+  };
 }
 
 module.exports = function parser(tokens) {
@@ -25,16 +37,23 @@ module.exports = function parser(tokens) {
 
     // Handle class names
     if (token.type === "CLASS_NAME") {
-        node.attributes.classNames = getClassNames(token.value);
+      node.attributes.classNames = getClassNames(token.value);
 
       token = tokens[++current];
     }
 
-    // Hanlde id 
+    // Hanlde id
     if (token.type === "ID") {
-      node.attributes.id = token.value
+      node.attributes.id = getId(token.value);
 
-      token = tokens[++current]
+      token = tokens[++current];
+    }
+
+    if (token.type === "ATTR") {
+      const { type, value } = getAttribute(token.value);
+      node.attributes[type] = value;
+
+      token = tokens[++current];
     }
 
     if (token.type === "STRING") {
@@ -48,7 +67,7 @@ module.exports = function parser(tokens) {
       return {
         type: node.type,
         value: node.value,
-        attributes : node.attributes,
+        attributes: node.attributes,
         children: node.children,
       };
     }
@@ -66,7 +85,7 @@ module.exports = function parser(tokens) {
       return {
         type: node.type,
         value: node.value,
-        attributes : node.attributes,
+        attributes: node.attributes,
         children: node.children,
       };
     }
