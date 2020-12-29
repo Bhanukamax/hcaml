@@ -2,7 +2,7 @@
 const fs = require("fs").promises;
 const lexer = require("./lexer");
 const parser = require("./parser");
-const transformer = require("./transformer");
+const codeGenerator = require("./code-generator");
 const prettier = require("prettier");
 
 async function main() { const fileName = process.argv[2]
@@ -40,7 +40,7 @@ async function main() { const fileName = process.argv[2]
   console.log("filtered tokens", filteredTokens);
 
   console.log("ast >>>", ast);
-  const code = transformer(ast);
+  const code = codeGenerator(ast);
     
 
   fs.writeFile(`${fileName}.html`, code);
