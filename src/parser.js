@@ -2,6 +2,11 @@ function getString(stringWithQoutes) {
   return stringWithQoutes.substr(1, stringWithQoutes.length - 2);
 }
 
+function getClassNames(classNames) {
+  return classNames.split('.').join(' ');
+
+}
+
 module.exports = function parser(tokens) {
   let current = 0;
   //return tokens;
@@ -18,10 +23,18 @@ module.exports = function parser(tokens) {
       token = tokens[++current];
     }
 
+    // Handle class names
     if (token.type === "CLASS_NAME") {
-        node.attributes.className = token.value
+        node.attributes.classNames = getClassNames(token.value);
 
       token = tokens[++current];
+    }
+
+    // Hanlde id 
+    if (token.type === "ID") {
+      node.attributes.id = token.value
+
+      token = tokens[++current]
     }
 
     if (token.type === "STRING") {

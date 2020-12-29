@@ -30,7 +30,7 @@ async function main() { const fileName = process.argv[2]
   const filteredTokens = tokens.filter(
     (item) => item.type !== "WHITE_SPACE" && item.type !== "LINE_BRAKE"
   );
-  fs.writeFile(`${fileName}.json`, JSON.stringify(filteredTokens, null, 2));
+  fs.writeFile(`${fileName}.tokens.json`, JSON.stringify(filteredTokens, null, 2));
 
   try {
 
