@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "dependencies": {
     "eslint": "^7.16.0",
-    "moo": "^0.5.1"
+    "moo": "^0.5.1",
+    "prettier": "^2.2.1"
   }
 }

@@ -3,9 +3,9 @@ const fs = require("fs").promises;
 const lexer = require("./lexer");
 const parser = require("./parser");
 const transformer = require("./transformer");
+const prettier = require("prettier");
 
-async function main() {
-  const fileName = process.argv[2]
+async function main() { const fileName = process.argv[2]
   const code = (await fs.readFile(fileName)).toString();
 
   lexer.reset(code);
@@ -44,6 +44,9 @@ async function main() {
     
 
   fs.writeFile(`${fileName}.html`, code);
+    const prettyCode = prettier.format(`<>${code}</>`);
+  fs.writeFile(`${fileName}.pretty.html`, prettyCode);
+    console.log(prettyCode);
   } catch(e) {
     console.log('parser ERROR >>>', e.stack);
   }
