@@ -21,6 +21,9 @@ module.exports = function parser(ast) {
         );
       }
 
+      if (node.children.length <= 0) {
+        return (code += "/>");
+      }
       code += ">";
 
       // If element has only one childe which is a string

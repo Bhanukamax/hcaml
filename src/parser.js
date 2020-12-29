@@ -34,8 +34,10 @@ module.exports = function parser(tokens) {
       //};
       token = tokens[++current];
 
-      // If the next token is also type "TAG" return 
-      if (token.type === "TAG") {
+      /* return if the tag has no body:
+       * i.e: next token is another tag or a closing paran
+       */
+      if (token.type === "TAG"  || token.type === "CLOSE_PAREN") {
         return {
           type: node.type,
           value: node.value,
