@@ -30,27 +30,30 @@ async function main() { const fileName = process.argv[2]
   const filteredTokens = tokens.filter(
     (item) => item.type !== "WHITE_SPACE" && item.type !== "LINE_BRAKE"
   );
-  fs.writeFile(`${fileName}.tokens.json`, JSON.stringify(filteredTokens, null, 2));
+  fs.writeFile(`${fileName}.all-tokens.json`, JSON.stringify(tokens, null, 2));
+  fs.writeFile(
+    `${fileName}.tokens.json`,
+    JSON.stringify(filteredTokens, null, 2)
+  );
+  //return;
 
   try {
+    const ast = parser(filteredTokens);
+    fs.writeFile(`${fileName}.ast.json`, JSON.stringify(ast, null, 2));
+    console.log("all tokens", tokens);
+    console.log("filtered tokens", filteredTokens);
 
-  const ast = parser(filteredTokens);
-  fs.writeFile(`${fileName}.ast.json`, JSON.stringify(ast, null, 2));
-  console.log("all tokens", tokens);
-  console.log("filtered tokens", filteredTokens);
+    console.log("ast >>>", ast);
+    const code = codeGenerator(ast);
 
-  console.log("ast >>>", ast);
-  const code = codeGenerator(ast);
-    
-
-  fs.writeFile(`${fileName}.html`, code);
+    fs.writeFile(`${fileName}.html`, code);
     const prettyCode = prettier.format(`<>${code}</>`);
-  fs.writeFile(`${fileName}.pretty.html`, prettyCode);
+    fs.writeFile(`${fileName}.pretty.html`, prettyCode);
     console.log(prettyCode);
-  } catch(e) {
-    console.log('parser ERROR >>>', e.stack);
+  } catch (e) {
+    console.log("parser ERROR >>>", e.stack);
   }
-  console.log('the args :: ', process.argv[2])
+  console.log("the args :: ", process.argv[2]);
 }
 
 main().catch((error) => console.log(error.stack));
