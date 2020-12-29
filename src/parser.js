@@ -37,7 +37,7 @@ module.exports = function parser(tokens) {
       /* return if the tag has no body:
        * i.e: next token is another tag or a closing paran
        */
-      if (token.type === "TAG"  || token.type === "CLOSE_PAREN") {
+      if (token.type === "TAG" || token.type === "CLOSE_PAREN") {
         return {
           type: node.type,
           value: node.value,
@@ -62,14 +62,13 @@ module.exports = function parser(tokens) {
     }
 
     if (token.type === "ATTR") {
-
       while (token.type === "ATTR") {
         const { type, value } = getAttribute(token.value);
         node.attributes[type] = value;
 
         token = tokens[++current];
       }
-      if (token.type === "TAG"  || token.type === "CLOSE_PAREN") {
+      if (token.type === "TAG" || token.type === "CLOSE_PAREN") {
         return {
           type: node.type,
           value: node.value,
