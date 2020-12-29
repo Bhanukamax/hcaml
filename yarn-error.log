@@ -1,0 +1,36 @@
+Arguments: 
+  /home/bm/.nvm/versions/node/v12.9.0/bin/node /home/bm/.nvm/versions/node/v12.9.0/bin/yarn init
+
+PATH: 
+  /home/bm/.opam/default/bin:/home/bm/.nvm/versions/node/v12.9.0/bin:/home/bm/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/home/bm/Android/Sdk/emulator:/home/bm/Android/Sdk/tools:/home/bm/Android/Sdk/tools/bin:/home/bm/Android/Sdk/platform-tools
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  12.9.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/home/bm/.nvm/versions/node/v12.9.0/lib/node_modules/yarn/lib/cli.js:136216:13)
+      at Interface.emit (events.js:209:13)
+      at Interface._ttyWrite (readline.js:887:16)
+      at ReadStream.onkeypress (readline.js:191:10)
+      at ReadStream.emit (events.js:209:13)
+      at emitKeys (internal/readline/utils.js:414:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1153:36)
+      at ReadStream.emit (events.js:209:13)
+      at addChunk (_stream_readable.js:305:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

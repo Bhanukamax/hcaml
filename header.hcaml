@@ -1,4 +1,21 @@
+h1 "this is the title"
+
 div [
-h1 "this is the title" 
+  "this is a div line 1"
+
+  p "this is a paragraph in div"
+
+  p "this is a paragraph2 in div"
+
+  p [ "this is a" span "paragraph3" "in div" ]
 ]
+
+p "this is the p"
+ul [
+  li "this is list item one"
+  li "this is list item 2"
+  li "this is list item 3"
+]
+
+p "this is a p tag"
 

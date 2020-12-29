@@ -1,1 +1,122 @@
-[{"type": "WORD", "value": "div"}, {"type": "PAREN", "value": "["}, {"type": "WORD", "value": "h1"}, {"type": "QUOAT", "value": "\""}, {"type": "WORD", "value": "this"}, {"type": "WORD", "value": "is"}, {"type": "WORD", "value": "the"}, {"type": "WORD", "value": "title"}, {"type": "QUOAT", "value": "\""}, {"type": "PAREN", "value": "]"}]
+[
+  {
+    "type": "TAG",
+    "value": "h1"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is the title\""
+  },
+  {
+    "type": "TAG",
+    "value": "div"
+  },
+  {
+    "type": "OPEN_PAREN",
+    "value": "["
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is a div line 1\""
+  },
+  {
+    "type": "TAG",
+    "value": "p"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is a paragraph in div\""
+  },
+  {
+    "type": "TAG",
+    "value": "p"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is a paragraph2 in div\""
+  },
+  {
+    "type": "TAG",
+    "value": "p"
+  },
+  {
+    "type": "OPEN_PAREN",
+    "value": "["
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is a\""
+  },
+  {
+    "type": "TAG",
+    "value": "span"
+  },
+  {
+    "type": "STRING",
+    "value": "\"paragraph3\""
+  },
+  {
+    "type": "STRING",
+    "value": "\"in div\""
+  },
+  {
+    "type": "CLOSE_PAREN",
+    "value": "]"
+  },
+  {
+    "type": "CLOSE_PAREN",
+    "value": "]"
+  },
+  {
+    "type": "TAG",
+    "value": "p"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is the p\""
+  },
+  {
+    "type": "TAG",
+    "value": "ul"
+  },
+  {
+    "type": "OPEN_PAREN",
+    "value": "["
+  },
+  {
+    "type": "TAG",
+    "value": "li"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is list item one\""
+  },
+  {
+    "type": "TAG",
+    "value": "li"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is list item 2\""
+  },
+  {
+    "type": "TAG",
+    "value": "li"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is list item 3\""
+  },
+  {
+    "type": "CLOSE_PAREN",
+    "value": "]"
+  },
+  {
+    "type": "TAG",
+    "value": "p"
+  },
+  {
+    "type": "STRING",
+    "value": "\"this is a p tag\""
+  }
+]
