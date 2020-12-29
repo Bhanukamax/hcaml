@@ -62,10 +62,13 @@ module.exports = function parser(tokens) {
     }
 
     if (token.type === "ATTR") {
-      const { type, value } = getAttribute(token.value);
-      node.attributes[type] = value;
 
-      token = tokens[++current];
+      while (token.type === "ATTR") {
+        const { type, value } = getAttribute(token.value);
+        node.attributes[type] = value;
+
+        token = tokens[++current];
+      }
       if (token.type === "TAG"  || token.type === "CLOSE_PAREN") {
         return {
           type: node.type,
